@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { Divider } from 'primereact/divider'
-import { useNavigate } from 'react-router'
+import { Navigate, useNavigate } from 'react-router'
 import { Toast } from 'primereact/toast'
 import { register } from '../api/register.js';
 
@@ -31,30 +31,37 @@ function Register() {
     };  
 
     return (
-        <div className='registerContainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '86dvh' }}>
-            <div className='loginForm' style={{ width: '300px' }}>
-                <h1>Register</h1>
-                <div className='p-fluid' style={{ gap: '1rem' }}>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <InputText value={student.email} id='email' type='email' style={{marginTop: '6px'}} onChange={(e) => setStudent((prev) => {
-                        return {...prev, email: e.target.value}
-                    })} />
-                </div>
-                <div style={{marginTop: '6px'}}>
-                    <label htmlFor='password'>Password</label>
-                    <InputText value={student.password} id='password' type='password' style={{marginTop: '6px'}} onChange={(e) => setStudent((prev) => {
-                        return {...prev, password: e.target.value}
-                    })} />
-                </div>
-                <Button label='Register' style={{marginTop: '1rem'}} onClick={handleRegister} />
-                <Divider />
-                <Button label='Login' onClick={() => {navigate('/login')}} />
-                </div>
-            </div>
-            <Toast ref={toastRef} /> 
-        </div>
-  )
+        <>
+            {
+                sessionStorage.getItem('token') ?
+                    <Navigate to='/' />
+                    :
+                    <div className='registerContainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '94dvh' }}>
+                        <div className='loginForm' style={{ width: '300px' }}>
+                            <h1>Register</h1>
+                            <div className='p-fluid' style={{ gap: '1rem' }}>
+                            <div>
+                                <label htmlFor='email'>Email</label>
+                                <InputText value={student.email} id='email' type='email' style={{marginTop: '6px'}} onChange={(e) => setStudent((prev) => {
+                                    return {...prev, email: e.target.value}
+                                })} />
+                            </div>
+                            <div style={{marginTop: '6px'}}>
+                                <label htmlFor='password'>Password</label>
+                                <InputText value={student.password} id='password' type='password' style={{marginTop: '6px'}} onChange={(e) => setStudent((prev) => {
+                                    return {...prev, password: e.target.value}
+                                })} />
+                            </div>
+                            <Button label='Register' style={{marginTop: '1rem'}} onClick={handleRegister} />
+                            <Divider />
+                            <Button label='Login' onClick={() => {navigate('/login')}} />
+                            </div>
+                        </div>
+                        <Toast ref={toastRef} /> 
+                    </div>
+            }   
+        </>
+    )  
 }
 
 export default Register;

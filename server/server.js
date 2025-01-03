@@ -23,7 +23,7 @@ app.use('/api', loginRoute);
 app.use('/api', registerRoute);
 
 app.use('*', (_, res) => {
-	res.status(404).json({ error: 'Route Not Found' });
+	res.status(404).json({ error: 'Route Not Found.' });
 });
 
 app.listen(PORT, () => {
