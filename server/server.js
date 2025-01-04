@@ -6,6 +6,7 @@ import helmet from 'helmet';
 // import routes
 import loginRoute from './routes/login.js';
 import registerRoute from './routes/register.js';
+import noteRoute from './routes/note.js';
 import db from './models/index.js';
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -21,6 +22,7 @@ app.get('/', (_, res) => {
 // routes
 app.use('/api', loginRoute);
 app.use('/api', registerRoute);
+app.use('/api', noteRoute);
 
 app.use('*', (_, res) => {
 	res.status(404).json({ error: 'Route Not Found.' });

@@ -7,17 +7,17 @@ Editorul de notițe trebuie să fie ușor de folosit pentru a prelua informații
 
 Funcționalități (minime)
 
-Ca student vreau să mă loghez folosind contul instituțional (@stud.ase.ro) pentru a gestiona notițele de la curs/seminar.
+Ca student vreau să mă loghez folosind contul instituțional (@stud.ase.ro) pentru a gestiona notițele de la curs/seminar. - done
 
-Ca student vreau să am posibilitatea de a vizualiza, adăuga, edita și șterge notițele de curs ca să organizez informația mai bine
+Ca student vreau să am posibilitatea de a vizualiza, adăuga, edita și șterge notițele de curs ca să organizez informația mai bine - done
 
 Ca student vreau să am opțiunea de a adăuga atașamente (imagini, documente) la notițele de curs/seminar ca să am mai multe detalii
 
-Ca student vreau să am posibilitatea de a organiza notițe în funcție de materii, data, etichete (tag), cuvinte cheie ca să regăsesc cu ușurință informația. 
+Ca student vreau să am posibilitatea de a organiza notițe în funcție de materii, data, etichete (tag), cuvinte cheie ca să regăsesc cu ușurință informația. - done
 
 Ca student vreau să am posibilitatea de a partaja notițe cu alți colegi.
 
-Ca student vreau să am posibilitatea de a integra conținut din alte surse pentru a lua notițe (de exemplu când urmăresc un video pe youtube, citesc o carte pe kindle, particip la o conferință online)
+Ca student vreau să am posibilitatea de a integra conținut din alte surse pentru a lua notițe (de exemplu când urmăresc un video pe youtube, citesc o carte pe kindle, particip la o conferință online) - done
 
 Ca student vreau să organizez grupuri de studiu. Voi invita mai mulți colegi pe grup voi partaja notițe
 

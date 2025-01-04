@@ -38,7 +38,7 @@ function Register() {
                     :
                     <div className='registerContainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '94dvh' }}>
                         <div className='loginForm' style={{ width: '300px' }}>
-                            <h1>Register</h1>
+                            <h1 style={{marginBottom: '1rem'}}>Register</h1>
                             <div className='p-fluid' style={{ gap: '1rem' }}>
                             <div>
                                 <label htmlFor='email'>Email</label>

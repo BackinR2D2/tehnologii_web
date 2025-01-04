@@ -30,7 +30,7 @@ function Login() {
                     :
                     <div className='loginContainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '94dvh' }}>
                         <div className='loginForm' style={{ width: '300px' }}>
-                            <h1>Login</h1>
+                            <h1 style={{marginBottom: '1rem'}}>Login</h1>
                             <div className='p-fluid' style={{ gap: '1rem' }}>
                             <div>
                                 <label htmlFor='email'>Email</label>

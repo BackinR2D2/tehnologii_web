@@ -9,3 +9,41 @@ html {
 body {
     margin: 0;
 }
+
+code {
+    font-family: Consolas,"courier new";
+    color: crimson;
+    background-color: #f1f1f1;
+    padding: 2px;
+    font-size: 105%;
+}
+
+img {
+    width: 240px;
+    height: 120px;
+    object-fit: contain;
+}
+
+h1,h2,h3,h4,h5,h6, p, ol, ul {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.materieFilterContainer .p-dropdown-label {
+    padding-top: 6px;
+}
+
+.tagFilterContainer .p-dropdown-label {
+    padding-top: 6px;
+}
+
+@media (max-width: 876px) {
+    .homepageContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hpTextarea, .markdownEditor {
+        width: 90% !important;
+    }
+}
