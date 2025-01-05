@@ -13,8 +13,21 @@ CREATE TABLE note (
     student_id INT NOT NULL,
     content TEXT NOT NULL,
     materie VARCHAR(255) NULL,
+    author VARCHAR(255) NOT NULL DEFAULT 'Author',
     tag VARCHAR(255) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (student_id) REFERENCES student(id)
+);
+
+CREATE TABLE note_access (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    author_id INT NOT NULL,
+    note_id INT NOT NULL,
+    member_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (author_id) REFERENCES student(id),
+    FOREIGN KEY (note_id) REFERENCES note(id),
+    FOREIGN KEY (member_id) REFERENCES student(id)
 );

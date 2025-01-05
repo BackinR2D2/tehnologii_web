@@ -1,9 +1,9 @@
 import { url } from '../../utils/url';
 
-export const getNotes = async (tag, materie, search) => {
+export const getNotes = async (tag, materie, search, authorFilter) => {
 	try {
 		const response = await fetch(
-			`${url}/notes?tag=${tag}&materie=${materie}&search=${search}`,
+			`${url}/notes?tag=${tag}&materie=${materie}&search=${search}&authorFilter=${authorFilter}`,
 			{
 				method: 'GET',
 				headers: {

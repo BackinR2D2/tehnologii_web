@@ -37,6 +37,10 @@ h1,h2,h3,h4,h5,h6, p, ol, ul {
     padding-top: 6px;
 }
 
+.authorFilterContainer .p-dropdown-label {
+    padding-top: 6px;
+}
+
 @media (max-width: 876px) {
     .homepageContainer {
         display: flex;

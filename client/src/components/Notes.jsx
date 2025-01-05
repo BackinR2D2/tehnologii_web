@@ -20,7 +20,9 @@ function Notes() {
     const [tagFilter, setTagFilter] = useState(null);
     const [materii, setMaterii] = useState([]);
     const [tags, setTags] = useState([]);
+    const [authors, setAuthors] = useState([]);
     const [search, setSearch] = useState('');
+    const [authorFilter, setAuthorFilter] = useState(null);
 
     const [isFiltering, setIsFiltering] = useState(false);
 
@@ -41,8 +43,9 @@ function Notes() {
         }
         setLoading(false);
         setNotes(response.data);
-        setMaterii([...new Set(response.data.map(note => note.materie))]);
-        setTags([...new Set(response.data.map(note => note.tag))]);
+        setMaterii([...new Set(response.data.map(note => note.materie).filter(e => e))]);
+        setTags([...new Set(response.data.map(note => note.tag).filter(e => e))]);
+        setAuthors([...new Set(response.data.map(note => note.author).filter(e => e))]);
     }
 
     const handleDeleteNote = async (id) => {
@@ -58,7 +61,7 @@ function Notes() {
     const handleFilter = async () => {
         setLoading(true);
         setIsFiltering(true);
-        const response = await getNotes(tagFilter, materieFilter, search);
+        const response = await getNotes(tagFilter, materieFilter, search, authorFilter);
         if (response.error) {
             toastRef.current.show({severity: 'error', summary: 'Error', detail: response.error});
             setIsFiltering(false);
@@ -82,7 +85,7 @@ function Notes() {
     }, []);
 
   return (
-    <div className='notesContainer' style={{padding: '1rem', height: 'calc(100vh - 120px)', overflow: 'auto'}}>
+    <div className='notesContainer' style={{padding: '1rem', height: 'calc(100vh - 120px)'}}>
         {
             loading ?
                 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
@@ -105,8 +108,11 @@ function Notes() {
                                     <div className='tagFilterContainer'>
                                         <Dropdown showClear style={{height: '34px'}} value={tagFilter} options={tags} onChange={(e) => setTagFilter(e.value)} placeholder='Tag' />
                                     </div>
+                                    <div className='authorFilterContainer' style={{height: '34px'}}>
+                                        <Dropdown showClear style={{height: '34px'}} value={authorFilter} options={authors} onChange={(e) => setAuthorFilter(e.value)} placeholder='Author' />
+                                    </div>
                                     <div className='filterButtonContainer'>
-                                        <Button style={{height: '34px'}} label='Filter' onClick={handleFilter} />
+                                        <Button style={{height: '34px'}} label='Filter' onClick={handleFilter} disabled={materieFilter === null && tagFilter === null && search === '' && authorFilter === null} />
                                     </div>
                                     {
                                         isFiltering ?
@@ -114,6 +120,7 @@ function Notes() {
                                             <Button style={{height: '34px'}} label='Clear Filters' severity='danger' onClick={() => {
                                                 setMaterieFilter(null);
                                                 setTagFilter(null);
+                                                setAuthorFilter(null);
                                                 setSearch('');
                                                 setIsFiltering(false);
                                                 fetchNotes();
@@ -139,7 +146,7 @@ function Notes() {
                         <div>
                             <div className='notesSearchAndFilterContainer' style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap'}}>
                                 <div className='searchContainer'>
-                                    <InputText value={search} onChange={(e) => setSearch(e.target.value)} type='text' placeholder='Search...' style={{padding: '6px', borderRadius: '6px', border: '1px solid #d1d5db', width: '300px'}} />
+                                    <InputText value={search} onChange={(e) => setSearch(e.target.value)} type='text' placeholder='Search...' style={{resize: 'none', padding: '6px', borderRadius: '6px', border: '1px solid #d1d5db', width: '300px'}} />
                                 </div>
                                 <div className='materieFilterContainer'>
                                     <Dropdown showClear style={{height: '34px'}} value={materieFilter} options={materii} onChange={(e) => setMaterieFilter(e.value)} placeholder='Materie' />
@@ -147,8 +154,11 @@ function Notes() {
                                 <div className='tagFilterContainer'>
                                     <Dropdown showClear style={{height: '34px'}} value={tagFilter} options={tags} onChange={(e) => setTagFilter(e.value)} placeholder='Tag' />
                                 </div>
+                                <div className='authorFilterContainer' style={{height: '34px'}}>
+                                    <Dropdown showClear style={{height: '34px'}} value={authorFilter} options={authors} onChange={(e) => setAuthorFilter(e.value)} placeholder='Author' />
+                                </div>
                                 <div className='filterButtonContainer'>
-                                    <Button style={{height: '34px'}} label='Filter' onClick={handleFilter} disabled={materieFilter === null && tagFilter === null && search === ''} />
+                                    <Button style={{height: '34px'}} label='Filter' onClick={handleFilter} disabled={materieFilter === null && tagFilter === null && search === '' && authorFilter === null} />
                                 </div>
                                 {
                                     isFiltering ?
@@ -156,6 +166,7 @@ function Notes() {
                                         <Button style={{height: '34px'}} label='Clear Filters' severity='danger' onClick={() => {
                                             setMaterieFilter(null);
                                             setTagFilter(null);
+                                            setAuthorFilter(null);
                                             setSearch('');
                                             setIsFiltering(false);
                                             fetchNotes();
@@ -178,11 +189,16 @@ function Notes() {
                                             <div>{note?.tag}</div>
                                             <div>{new Date(note?.createdAt)?.toLocaleDateString()}</div>
                                         </div>
-                                        <div className='deleteNoteButtonContainer' style={{textAlign: 'end', paddingTop: '1rem'}}>
-                                            <Button label="Delete" severity='danger' size='small' onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleDeleteNote(note?.id);
-                                            }} />
+                                        <div>
+                                            <div className='noteAuthor' style={{marginTop: '1.5rem', textAlign: 'end'}}>
+                                                {note?.author}
+                                            </div>
+                                            <div className='deleteNoteButtonContainer' style={{textAlign: 'center', paddingTop: '1rem', width: '100%'}}>
+                                                <Button label="Delete" severity='danger' style={{width: '100%'}} size='small' onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleDeleteNote(note?.id);
+                                                }} />
+                                            </div>
                                         </div>
                                     </div>
                                     ))

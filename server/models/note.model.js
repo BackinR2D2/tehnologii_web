@@ -10,6 +10,10 @@ const Note = db.define('note', {
 		type: DataTypes.TEXT,
 		allowNull: false,
 	},
+	author: {
+		type: DataTypes.STRING,
+		allowNull: true,
+	},
 	materie: {
 		type: DataTypes.STRING,
 		allowNull: true,
