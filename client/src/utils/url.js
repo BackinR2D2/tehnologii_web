@@ -4,4 +4,3 @@ if (import.meta.env.MODE === 'development') {
 } else {
 	url = 'https://tehnologii-web.onrender.com/api';
 }
-console.log(url, import.meta.env);
