@@ -2,7 +2,7 @@ import { url } from '../../utils/url';
 
 export const addNote = async (data) => {
 	try {
-		const response = await fetch(`${url}/api/notes`, {
+		const response = await fetch(`${url}/notes`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

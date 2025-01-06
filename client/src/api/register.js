@@ -2,7 +2,7 @@ import { url } from '../utils/url';
 
 export const register = async (data) => {
 	try {
-		const response = await fetch(`${url}/api/register`, {
+		const response = await fetch(`${url}/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
