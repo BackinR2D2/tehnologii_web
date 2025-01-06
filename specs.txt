@@ -31,3 +31,9 @@ https://evernote.com/
 // specificatii proiect
 
 https://docs.google.com/document/d/1HK2MVNMFAkI_o2VQY3R-3jxx51dDMbBRVlxuNm5knro/edit?tab=t.0
+
+// link productie
+
+front-end: Netlify - https://proiect-web-facultate.netlify.app/
+
+back-end: Render - https://tehnologii-web.onrender.com/
