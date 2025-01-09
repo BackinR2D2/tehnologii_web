@@ -216,11 +216,7 @@ router.get('/notes', auth, async (req, res) => {
 				const where = {
 					id: note.note_id,
 				};
-				if (
-					orParams.length > 0 &&
-					orParams[0].content !== undefined &&
-					orParams[0].content !== null
-				) {
+				if (orParams.length > 0) {
 					where[Op.and] = orParams;
 				}
 				const noteData = await Note.findOne({ where });
